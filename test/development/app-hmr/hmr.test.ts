@@ -1,11 +1,12 @@
-import { nextTestSetup } from 'e2e-utils'
+import { FileRef, nextTestSetup } from 'e2e-utils'
 import { retry, waitFor } from 'next-test-utils'
+import path from 'path'
 
 const envFile = '.env.development.local'
 
 describe(`app-dir-hmr`, () => {
   const { next } = nextTestSetup({
-    files: __dirname,
+    files: new FileRef(path.join(__dirname, 'fixtures', 'app-hmr')),
   })
 
   describe('filesystem changes', () => {
